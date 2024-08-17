@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<div class="col-md-6 offset-md-3">
+<h2>Add Patient Record</h2>
+
+<form method="POST" action="{% url 'add_record' %}">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+
+    <br/>
+    <button type="submit" class="btn btn-secondary">Add</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Return</a>
+</form>
+</div>
+{%endblock%}

@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-
+from .models import Record
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
@@ -34,9 +34,23 @@ class SignUpForm(UserCreationForm):
 
 
 
+#create Add Record Form
 
+class AddRecordForm(forms.ModelForm):
+    Name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Name", "class":"form-control"}), label="")
+    Age = forms.IntegerField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Age", "class":"form-control"}), label="")
+    Gender = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Gender", "class":"form-control"}), label="")
+    Blood_Type = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Blood Type", "class":"form-control"}), label="")
+    Medeical_Condition = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Medical Condition", "class":"form-control"}), label="")
+    Date_Of_Admission = forms.DateField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Date of Admission", "class":"form-control"}), label="")
+    Doctor_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Name of Doctor", "class":"form-control"}), label="")
+    Hospital = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Hospital", "class":"form-control"}), label="")
+    Insurance_Provider = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Insurance Provider", "class":"form-control"}), label="")
+    Billing_Amount = forms.FloatField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Billing Amount", "class":"form-control"}), label="")
 
-
+    class Meta:
+        model = Record
+        exclude = ("user",)
 
         
 

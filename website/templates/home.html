@@ -1,12 +1,56 @@
 {%extends 'base.html' %}
 
 {%block content%}
-<div class="col-md-6 offset-md-3">
+
 
     {% if user.is_authenticated %}
-    <h1>Hello World</h1>
+    <h1>Healthcare Records</h1>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Blood Type</th>
+            <th scope="col">Medical Condition</th>
+            <th scope="col">Date Of Admission</th>
+            <th scope="col">Name of Doctor</th>
+            <th scope="col">Hospital</th>
+            <th scope="col">Insurance Provider</th>
+            <th scope="col">Billing Amount</th>
+            <th scope="col">Created at</th>
+          </tr>
+          
+        </thead> 
+        <tbody class="table-group-divider">
+            {% if records%}
+                {% for record in records %}
+                <tr>
+                    <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+                    <td>{{ record.Name }}</td>
+                    <td>{{ record.Age }}</td>
+                    <td>{{ record.Gender }}</td>
+                    <td>{{ record.Blood_Type }}</td>
+                    <td>{{ record.Medeical_Condition }}</td>
+                    <td>{{ record.Date_Of_Admission }}</td>
+                    <td>{{ record.Doctor_name }}</td>
+                    <td>{{ record.Hospital }}</td>
+                    <td>{{ record.Insurance_Provider }}</td>
+                    <td>{{ record.Billing_Amount }}</td>
+                    <td>{{ record.created_at }}</td>
+                </tr>
+                {% endfor %}
+        {% endif %}
+            
+
+            
+        </tbody> 
+    </table>
+    
 
     {% else %}
+    <div class="col-md-6 offset-md-3">
     <h1>Login</h1>
     <br/>
     <form method="POST" action="{% url 'home' %}">

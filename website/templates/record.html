@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+
+{%block content%}
+
+
+<div class="card">
+    <div class="card-header">
+        <strong>{{ patient_record.Name }}</strong>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><strong>ID:    </strong>{{ patient_record.id }}</p>
+        <p class="card-text"><strong>Age:    </strong>{{ patient_record.Age }}</p>
+        <p class="card-text"><strong>Gender:    </strong>{{ patient_record.Gender }}</p>
+        <p class="card-text"><strong>Blood Type:    </strong>{{ patient_record.Blood_Type }}</p>
+        <p class="card-text"><strong>Medical Condition:    </strong>{{ patient_record.Medeical_Condition }}</p>
+        <p class="card-text"><strong>Date of Admission:    </strong>{{ patient_record.Date_Of_Admission }}</p>
+        <p class="card-text"><strong>Doctor Name:    </strong>{{ patient_record.Doctor_name }}</p>
+        <p class="card-text"><strong>Hospital:    </strong>{{ patient_record.Hospital }}</p>
+        <p class="card-text"><strong>Insurance Provider:    </strong>{{ patient_record.Insurance_Provider }}</p>
+        <p class="card-text"><strong>Billing Amount:    </strong>{{ patient_record.Billing_Amount }}</p>
+        <p class="card-text"><strong>Created At:    </strong>{{ patient_record.created_at }}</p>
+
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+  
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'delete' patient_record.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'update_record' patient_record.id %}" class="btn btn-secondary">Update</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Return</a>
+
+        
+    </div>
+</div>
+    
+
+{%endblock%}
